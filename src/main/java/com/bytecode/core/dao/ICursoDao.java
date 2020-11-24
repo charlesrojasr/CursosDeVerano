@@ -8,7 +8,7 @@ import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
 
 
-public interface ICursoDao {
+public interface ICursoDao{
 
 	public List<Curso> getCursos();
 	public void save(Curso curso);
@@ -16,4 +16,7 @@ public interface ICursoDao {
 	public void eliminar(Long id);
 	
 	public List<CategoriaCursos> findByNombre(String term);
+	
+	@Query("SELECT p FROM Curso p WHERE p.nombre like %?1%")
+	public List<Curso> findByNomb(String term);
 }

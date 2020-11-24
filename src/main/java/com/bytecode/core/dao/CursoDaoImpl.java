@@ -59,7 +59,12 @@ public class CursoDaoImpl implements ICursoDao{
 		// TODO Auto-generated method stub
 		return categoriadao.findByNombre(term);
 	}
-	
+
+	@Override
+	public List<Curso> findByNomb(String term) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

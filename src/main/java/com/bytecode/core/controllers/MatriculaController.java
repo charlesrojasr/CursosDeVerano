@@ -1,13 +1,17 @@
 package com.bytecode.core.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.bytecode.core.dao.IAlumnoDao;
 import com.bytecode.core.models.entity.Alumno;
+import com.bytecode.core.models.entity.Curso;
 import com.bytecode.core.models.entity.Matricula;
 
 @Controller
@@ -32,4 +36,8 @@ public class MatriculaController {
 		return "matriculas/formulario";
 	}
 	
+	@RequestMapping(value="/cargar-cursos/{term}", produces = {"application/json"})
+	public @ResponseBody List<Curso> cargarCursos(@PathVariable String term){
+			return alumnodao.findbyNomb(term);
+	}
 }

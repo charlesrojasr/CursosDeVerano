@@ -6,9 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bytecode.core.models.entity.Alumno;
+import com.bytecode.core.models.entity.Curso;
 
 
 @Repository
@@ -16,6 +18,8 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 	
 	@PersistenceContext
 	private EntityManager em;
+	@Autowired
+	private ICursoDao cursoDAO;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -45,5 +49,10 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 	public void eliminar(Long id) {		
 		Alumno alumno = buscarAlumno(id);
 		em.remove(alumno);
+	}
+
+	@Override
+	public List<Curso> findbyNomb(String term) {
+		return cursoDAO.findByNomb(term);
 	}
 }
