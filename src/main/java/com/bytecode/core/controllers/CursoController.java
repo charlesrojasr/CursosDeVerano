@@ -1,5 +1,6 @@
 package com.bytecode.core.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bytecode.core.dao.ICategoriaDao;
 import com.bytecode.core.dao.ICursoDao;
+import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
 
 
@@ -20,6 +24,9 @@ public class CursoController {
  
 	@Autowired
 	private ICursoDao cursodao;
+	
+	@Autowired
+	private ICategoriaDao categoriadao;
 	
 	@RequestMapping("/listar")
 	public String listar(Model model) {
@@ -31,6 +38,8 @@ public class CursoController {
 	@RequestMapping("/form")
 	public String crear(Map<String, Object> model) {
 		Curso curso = new Curso();
+
+		//curso.setCategoria(categoria);
 		model.put("titulo", "Registrar curso");
 		model.put("curso", curso);
 		model.put("pagina", 2);
@@ -74,4 +83,11 @@ public class CursoController {
 		model.addAttribute("curso", curso);
 		return "cursos/ver";
 	}
+	
+	@RequestMapping(value = "/cargar-categorias/{term}", produces = {"application/json"})
+	public @ResponseBody List<CategoriaCursos> cargarCategorias(@PathVariable String term){
+		return cursodao.findByNombre(term);
+	}
+	
+	
 }
