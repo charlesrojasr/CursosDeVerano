@@ -17,7 +17,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" style="background-color: lightblue">
 
                 <!-- Topbar -->
                 <nav th:replace="layout/layout :: topar" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -31,7 +31,7 @@
 
                     <!-- Content Row -->
                     <div class="row">
-	                        <div class="container bg-container-listar">
+	                        <div class="container bg-container-listar py-4" style="background-color: white">
 								<h3>Listado de cursos</h3>
 								<table class="table table-bordered table-hover">
 									<thead class="thead-dark">
@@ -39,18 +39,16 @@
 											<th>ID</th>
 											<th>Nombre</th>
 											<th>Precio</th>
-											<th>Cantidad</th>
 											<th>Fecha de creación</th>
 											<th></th>
 											<th></th>									
 										</tr>
 									</thead>
-									<tbody>
+									<tbody class="bg-light">
 										<tr th:each="item: ${cursos}">
 											<td th:text="${item.id}"></td>
 											<td th:text="${item.nombre}"></td>
 											<td th:text="${item.precio}"></td>
-											<td th:text="${item.cantidad}"></td>
 											<td th:text="${item.fecha_creacion}"></td>												
 											<td>
 												<a th:href="@{/cursos/form/}+${item.id}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
