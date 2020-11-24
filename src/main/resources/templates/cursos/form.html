@@ -17,7 +17,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" style="background-color: lightblue">
 
                 <!-- Topbar -->
                 <nav th:replace="layout/layout :: topar" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -45,13 +45,8 @@
 											<label>Precio:</label>
 											<input type="text" th:field="*{precio}" class="form-control">
 										</div>
-									</div>
-									
+									</div>									
 									<div class="row">
-										<div class="col-md-6 mb-2">
-											<label>Cantidad:</label>
-											<input type="text" th:field="*{cantidad}" class="form-control">
-										</div>
 										<div class="col-md-6 mb-2">
 												<label>Fecha de Registro:</label>
 												<input type="date" class="form-control" th:field="*{fecha_creacion} ">

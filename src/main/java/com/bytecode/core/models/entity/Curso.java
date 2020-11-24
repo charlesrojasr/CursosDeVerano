@@ -25,7 +25,7 @@ public class Curso implements Serializable {
 	private Long id;
 	private String nombre;
 	private Double precio;
-	private int cantidad;
+//	private int cantidad;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecha_creacion;
@@ -42,9 +42,7 @@ public class Curso implements Serializable {
 	@PrePersist
 	public void prePresist() {
 		fecha_creacion = new Date();
-	}
-	
-	
+	}		
 	
 	public CategoriaCursos getCategoria() {
 		return categoria;
@@ -94,36 +92,15 @@ public class Curso implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-
-
-	public Curso(Long id, String nombre, Double precio, int cantidad, Date fecha_creacion, Profesor profesor,
-			CategoriaCursos categoria) {
-
-		this.id = id;
-		this.nombre = nombre;
-		this.precio = precio;
-		this.cantidad = cantidad;
-		this.fecha_creacion = fecha_creacion;
-		this.profesor = profesor;
-		this.categoria = categoria;
-	}
-
 
 
 	public Curso() {
 
 	}
-	
-	
-	
+
+
+
+
 	private static final long serialVersionUID = 1L;
 	
 }
