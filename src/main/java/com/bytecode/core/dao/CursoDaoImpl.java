@@ -6,9 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bytecode.core.models.entity.Alumno;
+import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
 
 
@@ -17,6 +19,9 @@ public class CursoDaoImpl implements ICursoDao{
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Autowired
+	private ICategoriaDao categoriadao;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -50,9 +55,9 @@ public class CursoDaoImpl implements ICursoDao{
 
 	@Override
 	@Transactional
-	public List<Curso> findByNombre(String term) {
+	public List<CategoriaCursos> findByNombre(String term) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriadao.findByNombre(term);
 	}
 	
 

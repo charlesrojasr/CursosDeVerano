@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
+import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
 
 
@@ -14,6 +15,5 @@ public interface ICursoDao {
 	public Curso buscarCurso(Long id);
 	public void eliminar(Long id);
 	
-	@Query("SELECT p FROM Curso p WHERE p.nombre like %?1%")
-	public List<Curso> findByNombre(String term);
+	public List<CategoriaCursos> findByNombre(String term);
 }

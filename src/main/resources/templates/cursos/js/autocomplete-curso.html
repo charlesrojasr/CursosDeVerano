@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<script type="text/javascript" th:fragment="javascriptCurso">
+		$(document).ready(function(){
+			$('#buscar_categoria').autocomplete({
+				source:function(request, response){
+					$.ajax({
+						url: "/cursos/cargar-categorias/"+request.term,
+						dataType: "json",
+						data:{
+							term: request.term
+						},
+						success: function(data){
+							response ($.map(data, function(item){
+								return{
+									value: item.id,
+									label: item.nombre,
+									precio: item.precio
+								};
+							}));
+						}						
+					});
+				},
+				select: function(event, ui){
+					$('#buscar_categoria').val(ui.item.label);
+					return false;
+				}
+			});
+		});
+	</script>
+</body>
+</html>
