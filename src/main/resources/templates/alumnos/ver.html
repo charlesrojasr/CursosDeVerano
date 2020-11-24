@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul th:replace="layout/layout :: sidebar" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">           
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav th:replace="layout/layout :: topar" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                </nav>
+                <!-- End of Topbar -->
+                
+                
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+
+                    <div class="container">
+                    	<div class="card bg-light">
+                    		<div class="card-header">Datos del Alumno</div>
+                    		<div class="card-body">
+                    			<ul class="list-group">
+                    				<li class="list-group-item" th:text="${alumno.nombres}"></li>
+                    				<li class="list-group-item" th:text="${alumno.apellidos}"></li>
+                    				<li class="list-group-item" th:text="${alumno.email}"></li>
+                    				<li class="list-group-item" th:text="${alumno.fecha_creacion}"></li>
+                    			</ul>
+                    			<br>
+                    			<br>
+                    			
+                    			<div>DATOS DEL APODERADO</div>
+                    			<ul class="list-group">                   
+                    				<li class="list-group-item" th:text="${alumno.nombres_apoderado}"></li>
+                    				<li class="list-group-item" th:text="${alumno.apellidos_apoderado}"></li>
+                    				<li class="list-group-item" th:text="${alumno.telefono_apoderado}"></li>
+                    			</ul>
+                    			
+                    			<div th:if="${#lists.isEmpty(alumno.matriculas)}" class="my-4">No se ha matriculado aún en ningún curso.</div>
+                    			<table th:if="${not#lists.isEmpty(alumno.matriculas)}" class="table table-bordered table-striped my-4">
+                    				<thead>
+                    					<tr>
+                    						<th>Id</th>
+                    						<th>Descripcion</th>
+                    						<th>Fecha de Creación</th>
+                    						<th>Total</th>
+                    					</tr>
+                    				</thead>
+                    				<tbody>
+                    					<tr th:each="item: ${alumno.matriculas}">
+                    						<td th:text="${item.id}"></td>
+                    						<td th:text="${item.descripcion}"></td>
+                    						<td th:text="${item.fecha_creacion}"></td>
+                    						<td th:text="${item.total}"></td>
+                    					</tr>
+                    				</tbody>
+                    			</table>
+                    		</div>
+                    	</div>
+                    </div>
+
+
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer th:replace="layout/layout :: footer" class="sticky-footer bg-white">
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a th:replace="layout/layout :: boton" class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div th:replace="layout/layout :: logout" class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        
+    </div>
+
+
+	<a th:replace="layout/layout :: js">
+   </a>
+
+</body>
+
+</html>
