@@ -26,6 +26,12 @@ public class AlumnoController {
 		return "/alumnos/listar";
 	}
 	
+	@RequestMapping("/matriculas/matricular")
+	public String listar2(Model model) {
+		model.addAttribute("alumnos", alumnodao.getAlumnos());
+		return "/matriculas/matricular";
+	}
+	
 	@RequestMapping("/alumnos/formulario")
 	public String crear(Map<String, Object> model) {
 		Alumno alumno = new Alumno();

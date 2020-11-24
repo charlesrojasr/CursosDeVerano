@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul th:replace="layout/layout :: sidebar" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">           
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav th:replace="layout/layout :: topar" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                </nav>
+                <!-- End of Topbar -->
+                
+                
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    
+                    <div class="container py-4">              
+                    	<div class="card bg-ligth">
+                    		<div class="card-header">Registro de Matrícula</div> 
+                    		<div class="card-body">
+                    			<form th:action="@{/matricula/form}" th:object="${matricula}" method="post">
+                    				<div class="row">
+                    					<label class="col-md-2">Alumno:</label>
+                    					<div class="col-md-10">
+                    						<input th:value="${matricula.alumno.nombres}+ ' ' + ${matricula.alumno.apellidos}"
+                    						class= "form-control" disabled="disabled">
+                    					</div>
+                    				</div>
+                    				
+                    				<div class="row mt-3">
+                    					<label class="col-md-2">Descripción: <br>(Indicar #meses y curso) </label>
+                    					<div class="col-md-10">
+                    						<textarea type="text" th:field="*{descripcion}" class="form-control"></textarea>
+                    					</div>
+                    				</div>
+                    				
+                    				<div class="row mt-4">
+                    					<div class="col-12">
+                    						<button type="submit" class="btn btn-secondary"><i class="fas fa-id-badge"></i> Crear Matrícula</button>
+                    					</div>
+                    				</div>
+                    			</form>
+                    		</div>                 	
+                    	</div>                                   
+                    </div>
+                    
+                    
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer th:replace="layout/layout :: footer" class="sticky-footer bg-white">
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a th:replace="layout/layout :: boton" class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div th:replace="layout/layout :: logout" class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">        
+    </div>
+
+	<a th:replace="layout/layout :: js">
+   </a>
+
+</body>
+
+</html>

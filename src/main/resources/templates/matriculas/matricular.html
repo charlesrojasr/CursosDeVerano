@@ -56,8 +56,6 @@
 								<th>Apellidos de Apoderado</th>
 								<th>Teléfono de Apoderado</th>
 								<th>Fecha de Registro</th>
-								<th></th>
-								<th></th>
 								<th></th>			
 									</tr>
 								</thead>
@@ -71,21 +69,10 @@
 										<td th:text="${item.apellidos_apoderado}"></td>
 										<td th:text="${item.telefono_apoderado}"></td>
 										<td th:text="${item.fecha_creacion}"></td>
-										<td><a class="btn btn-info" th:href="@{/ver/}+${item.id}"><i class="fas fa-info-circle"></i></a></td>
-										<td>
-											<a th:href="@{/formulario/}+${item.id}" class="btn btn-warning"><i class="fas fa-user-edit"></i></a>
-										</td>
-										<td> 
-											<a th:href="@{/eliminar/}+${item.id}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar?');"><i class="fas fa-user-minus"></i></a>
-										</td>
+										<td><a class="btn btn-success" th:href="@{/matricula/form/}+${item.id}"><i class="far fa-plus-square"></i>Seleccionar</a></td>
 									</tr>
 								</tbody>
 							</table>
-							
-							<br>
-							<br>
-							<br>
-							 <center> <a th:href="@{/alumnos/formulario}"class="btn btn-secondary" ><i class="fas fa-user-plus"></i>Registrar Alumno</a></center>
 							<br>
 							<br>
 					
