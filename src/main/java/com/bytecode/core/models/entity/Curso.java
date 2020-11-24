@@ -14,18 +14,20 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "cursos")
 public class Curso implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private Double precio;
+	private int cantidad;
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecha_creacion;
 	
 	//Relación Curso - Profesor
@@ -48,25 +50,17 @@ public class Curso implements Serializable {
 		return categoria;
 	}
 
-
-
 	public void setCategoria(CategoriaCursos categoria) {
 		this.categoria = categoria;
 	}
-
-
 
 	public Profesor getProfesor() {
 		return profesor;
 	}
 
-
-
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -99,8 +93,37 @@ public class Curso implements Serializable {
 	public void setFecha_creacion(Date fecha_creacion) {
 		this.fecha_creacion = fecha_creacion;
 	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+
+	public Curso(Long id, String nombre, Double precio, int cantidad, Date fecha_creacion, Profesor profesor,
+			CategoriaCursos categoria) {
+
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.cantidad = cantidad;
+		this.fecha_creacion = fecha_creacion;
+		this.profesor = profesor;
+		this.categoria = categoria;
+	}
+
+
+
+	public Curso() {
+
+	}
 	
 	
 	
+	private static final long serialVersionUID = 1L;
 	
 }
