@@ -112,21 +112,51 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    
-					<!-- Mostrar errores/advertencias generadas -->
-					
-						
 
-                    <!-- Topbar Navbar -->
+					<!-- Mostrar errores y advertencias -->
+					<div th:fragment="error-msg"
+						class="alert alert-danger alert-dismissible fade show"
+						role="alert" th:if="${error != null}">
+						<span th:text="${error}"></span>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<!-- Mostrar success -->
+					<div th:fragment="success-msg"
+						class="alert alert-success alert-dismissible fade show"
+						role="alert" th:if="${success != null}">
+						<span th:text="${success}"></span>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<!-- Mostrar info -->
+					<div th:fragment="info-msg"
+						class="alert alert-info alert-dismissible fade show"
+						role="alert" th:if="${info != null}">
+						<span th:text="${info}"></span>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow" sec:authorize="isAuthenticated()">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                                <span sec:authentication="name" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span sec:authentication="principal.authorities"></span>
                                 <img class="img-profile rounded-circle" th:src="@{https://source.unsplash.com/QAB-WJcbgJk/60x60}">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -137,6 +167,7 @@
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
                                 </a>
+                               
                             </div>
                         </li>
 
@@ -188,7 +219,9 @@
 					Seleccione "Salir" si está listo para finalizar la sesión.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" th:href="@{/login/index}">Salir</a>
+                    <form th:action="@{/logout}" method="post">
+                       <button type="submit" class="btn btn-primary" th:href="@{/login/index}">Salir</button>
+                    </form>
                 </div>
             </div>
         </div>
