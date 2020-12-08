@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 //import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 //import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
 
-
+@Repository("cursodao")
 public interface ICursoDao extends CrudRepository<Curso, Integer>{
 	/*
 	public List<Curso> getCursos();

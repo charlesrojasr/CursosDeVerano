@@ -1,27 +1,23 @@
-package com.bytecode.core.dao;
-/*
+package com.bytecode.core.serviceImpl;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import com.bytecode.core.models.entity.Alumno;
-import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
+import com.bytecode.core.service.CursoService;
 
-
-@Repository
-public class CursoDaoImpl implements ICursoDao{
+@Service("cursoservice")
+public class CursoServiceImpl implements CursoService{
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	@Autowired
-	private ICategoriaDao categoriadao;
+	//@Autowired
+	//private ICategoriaDao categoriadao;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -53,6 +49,7 @@ public class CursoDaoImpl implements ICursoDao{
 		em.remove(curso);
 	}
 
+	/*
 	@Override
 	@Transactional
 	public List<CategoriaCursos> findByNombre(String term) {
@@ -60,12 +57,6 @@ public class CursoDaoImpl implements ICursoDao{
 		return categoriadao.findByNombre(term);
 	}
 
-	@Override
-	public List<Curso> findByNomb(String term) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+*/
 
 }
-*/
