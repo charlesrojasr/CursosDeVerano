@@ -38,6 +38,6 @@ public class MatriculaController {
 	
 	@RequestMapping(value="/cargar-cursos/{term}", produces = {"application/json"})
 	public @ResponseBody List<Curso> cargarCursos(@PathVariable String term){
-			return alumnodao.findbyNomb(term);
+			return alumnodao.findByNombre(term);
 	}
 }

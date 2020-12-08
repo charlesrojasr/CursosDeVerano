@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.bytecode.core.models.entity.Alumno;
 import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
-
+/*
 
 @Repository
 public class CursoDaoImpl implements ICursoDao{
@@ -68,3 +68,4 @@ public class CursoDaoImpl implements ICursoDao{
 
 
 }
+*/

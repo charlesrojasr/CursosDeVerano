@@ -111,41 +111,8 @@
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
-                    </button>
-
-					<!-- Mostrar errores y advertencias -->
-					<div th:fragment="error-msg"
-						class="alert alert-danger alert-dismissible fade show"
-						role="alert" th:if="${error != null}">
-						<span th:text="${error}"></span>
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-
-					<!-- Mostrar success -->
-					<div th:fragment="success-msg"
-						class="alert alert-success alert-dismissible fade show"
-						role="alert" th:if="${success != null}">
-						<span th:text="${success}"></span>
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-
-					<!-- Mostrar info -->
-					<div th:fragment="info-msg"
-						class="alert alert-info alert-dismissible fade show"
-						role="alert" th:if="${info != null}">
-						<span th:text="${info}"></span>
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-
+                    </button>					
+					
 					<!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -179,7 +146,40 @@
 				
 				
                 <!-- /.container-fluid -->
+                
+				<!-- Mostrar errores y advertencias -->
+					<div th:fragment="error-msg"
+						class="alert alert-danger alert-dismissible fade show"
+						role="alert" th:if="${error != null}">
+						<span th:text="${error}"></span>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
+					<!-- Mostrar success -->
+					<div th:fragment="success-msg"
+						class="alert alert-success alert-dismissible fade show"
+						role="alert" th:if="${success != null}">
+						<span th:text="${success}"></span>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 
+					<!-- Mostrar info -->
+					<div th:fragment="info-msg"
+						class="alert alert-info alert-dismissible fade show"
+						role="alert" th:if="${info != null}">
+						<span th:text="${info}"></span>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
             </div>
             <!-- End of Main Content -->
 

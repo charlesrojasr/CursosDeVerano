@@ -39,7 +39,8 @@
 											<th>ID</th>
 											<th>Nombre</th>
 											<th>Precio</th>
-											<th>Fecha de creación</th>								
+											<th>Fecha de creación</th>
+											<!-- <th>Categoría</th> -->								
 											<th></th>
 											<th></th>									
 										</tr>
@@ -49,7 +50,8 @@
 											<td th:text="${item.id}"></td>
 											<td th:text="${item.nombre}"></td>
 											<td th:text="${item.precio}"></td>
-											<td th:text="${item.fecha_creacion}"></td>																							
+											<td th:text="${item.fecha_creacion}"></td>
+											<!-- <td th:text="${item.categoria.id}"></td> -->																							
 											<td>
 												<a th:href="@{/cursos/form/}+${item.id}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
 											</td>

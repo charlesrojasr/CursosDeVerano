@@ -12,5 +12,5 @@ public interface IAlumnoDao {
 		public Alumno buscarAlumno(Long id);
 		public void eliminar(Long id);
 		
-		public List<Curso> findbyNomb(String term);
+		public List<Curso> findByNombre(String term);
 }

@@ -52,7 +52,7 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 	}
 
 	@Override
-	public List<Curso> findbyNomb(String term) {
-		return cursoDAO.findByNomb(term);
+	public List<Curso> findByNombre(String term) {
+		return cursoDAO.findByNombre(term);
 	}
 }

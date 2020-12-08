@@ -17,7 +17,7 @@ import com.bytecode.core.dao.ICursoDao;
 import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
 
-
+/*
 @Controller
 @RequestMapping("/cursos")
 public class CursoController {
@@ -91,3 +91,4 @@ public class CursoController {
 	
 	
 }
+*/
