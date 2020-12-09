@@ -3,19 +3,21 @@ package com.bytecode.core.controllers;
 import java.util.List;
 import java.util.Map;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.bytecode.core.dao.ICategoriaDao;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+import com.bytecode.core.dao.CategoriaDao;
 import com.bytecode.core.dao.ICursoDao;
-import com.bytecode.core.models.entity.CategoriaCursos;
 import com.bytecode.core.models.entity.Curso;
+import com.bytecode.core.service.CategoriaService;
 import com.bytecode.core.service.CursoService;
 
 
@@ -26,33 +28,45 @@ public class CursoController {
 	//@Autowired
 	//private ICursoDao cursodao;
 	
-	//@Autowired
-	//private ICategoriaDao categoriadao;
+	@Autowired
+	@Qualifier("categoriaservice")
+	private CategoriaService categoriaservice;
 	
 	@Autowired
 	private CursoService cursoservice;
 	
 	@RequestMapping("/listar")
 	public String listar(Model model) {
-		model.addAttribute("cursos", cursoservice.getCursos());
+		List<Curso> cursos = cursoservice.getCursos();
+		model.addAttribute("cursos", cursos);
+		model.addAttribute("curso", new Curso());													
 		model.addAttribute("pagina", 1);
 		return "cursos/listar";
 	}
 	
 	@RequestMapping("/form")
-	public String crear(Map<String, Object> model) {
+	public String crear(Map<String, Object> model, Model model2) {
 		Curso curso = new Curso();
 
 		//curso.setCategoria(categoria);
 		model.put("titulo", "Registrar curso");
 		model.put("curso", curso);
 		model.put("pagina", 2);
+		model2.addAttribute("categoria", categoriaservice.getCategoriaCursos());
 		return "cursos/form";
 	}
 	
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(Curso curso) {
-		cursoservice.save(curso);
+	public String guardar(@Valid Curso curso, BindingResult result, Model model) {
+		//model.addAttribute("categoria", categoriadao.getCategoriaCursos());
+		if (result.hasErrors()) {
+			model.addAttribute("categoria", categoriaservice.getCategoriaCursos());
+			return "cursos/form";
+		}
+		else {
+			cursoservice.save(curso);			
+		}
+		
 		return "redirect:listar";
 	}
 	
@@ -65,6 +79,7 @@ public class CursoController {
 			return "redirect:/listar";
 		}
 		model.addAttribute("titulo", "Modificar Cliente");
+		model.addAttribute("categoria", categoriaservice.getCategoriaCursos());
 		model.addAttribute("curso",curso);
 		return "cursos/form";
 	}

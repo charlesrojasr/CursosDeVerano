@@ -52,8 +52,14 @@
 												<input type="date" class="form-control" th:field="*{fecha_creacion} ">
 										</div>	
 										<div class="col-md-6 mb-2" >
-												<label>Buscar categoría:</label>
-												<input type="text" class="form-control" name="buscar_categoria" id="buscar_categoria" >
+												<label>Categoría:</label>
+												<!-- <input type="text" class="form-control" name="buscar_categoria" id="buscar_categoria" > -->
+												<select class="browser-default custom-select"
+													th:field="*{categoria}">
+													<option value="" th:text="'No Categorizado'"></option>
+													<option th:each="cat :${categoria}" th:value="${cat.id}" th:text="${cat.nombre}" th:if="${cat.id != 10}" />
+													<!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small> -->
+												</select>
 										</div>				
 									</div>
 									<br>

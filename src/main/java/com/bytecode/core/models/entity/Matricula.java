@@ -36,7 +36,7 @@ public class Matricula implements Serializable{
 	
 	//Relación entre Matricula - DetalleFactura
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="matricula_id")
+	@JoinColumn(name="matricula_id", nullable = false)
 	private List<DetalleMatricula> detalles;
 	
 	

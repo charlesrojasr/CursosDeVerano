@@ -19,12 +19,12 @@ public class CategoriaCursos implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	private String nombre;
 	//Relación Cursos - Profesor
-	@OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Curso> cursos;
-
+	//@OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//private List<Curso> cursos;
+/*
 	public CategoriaCursos() {
 		cursos = new ArrayList<Curso>();
 	}
@@ -36,12 +36,12 @@ public class CategoriaCursos implements Serializable {
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}
-
-	public Long getId() {
+*/
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -57,7 +57,54 @@ public class CategoriaCursos implements Serializable {
 		this.nombre = nombre;
 	}
 
+	
+	public CategoriaCursos(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
 
+	public CategoriaCursos() {
+		super();
+	}
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CategoriaCursos other = (CategoriaCursos) obj;
+		if (id != other.id)
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "CategoriaCursos [id=" + id + ", nombre=" + nombre + "]";
+	}
+
+	
 
 	private static final long serialVersionUID = 1L;
 

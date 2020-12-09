@@ -8,7 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,7 +37,8 @@ public class Curso implements Serializable {
 	private Profesor profesor;
 	
 	//Relación Curso - Categoria
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne
+	@JoinColumn(name = "categoria_id")
 	private CategoriaCursos categoria;
 	
 	
@@ -44,13 +47,7 @@ public class Curso implements Serializable {
 		fecha_creacion = new Date();
 	}		
 	
-	public CategoriaCursos getCategoria() {
-		return categoria;
-	}
 
-	public void setCategoria(CategoriaCursos categoria) {
-		this.categoria = categoria;
-	}
 
 	public Profesor getProfesor() {
 		return profesor;
@@ -92,11 +89,24 @@ public class Curso implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-
-
-	public Curso() {
-
+	public CategoriaCursos getCategoria() {
+		return categoria;
 	}
+
+
+
+	public void setCategoria(CategoriaCursos categoria) {
+		this.categoria = categoria;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Curso [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", profesor=" + profesor
+				+ ", categorias=" + "]";
+	}
+
 
 
 

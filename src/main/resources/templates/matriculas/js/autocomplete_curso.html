@@ -26,11 +26,62 @@
 					});
 				},
 				select: function(event, ui){
-					$('#buscar_curso').val(ui.item.label);
+					if(formatoItem.existeCurso(ui.item.value)){
+						formatoItem.incrementarCantidad(ui.item.value, ui.item.precio);
+						$('#buscar_curso').val('');
+						return false;
+					}
+					//$('#buscar_curso').val(ui.item.label);
+					var linea = $('#plantillaItemsMatricula').html();
+					linea = linea.replace(/{ID}/g, ui.item.value);
+					linea = linea.replace(/{NOMBRE}/g, ui.item.label);
+					linea = linea.replace(/{PRECIO}/g, ui.item.precio); 
+					
+					$('#cargarItemCursos tbody').append(linea);
+					$('#buscar_curso').val('');
+					formatoItem.calcularImporte(ui.item.value, ui.item.precio, 1);
 					return false;
 				}
 			});
 		});
+		
+		$('form').submit(function(){
+			$('#plantillaItemsMatricula').remove();
+			return;
+		});
+		
+		var formatoItem = {
+				calcularImporte: function(id, precio, cantidad){
+					$('#total_importe_'+id).html(precio * parseInt(cantidad));
+					this.calcularGranTotal();
+				},
+				eliminarLineaMatricula: function(id){
+					$('#row_'+id).remove();
+					this.calcularGranTotal();
+				},
+				existeCurso: function(id){
+					var resultado = false;
+					$('input[name="item_id[]"]').each(function(){
+						if(parseInt(id) == parseInt($(this).val())){
+							resultado = true;
+							//console.log("Existe");
+						}
+					});
+					return resultado;
+				},
+				incrementarCantidad: function(id, precio){
+					var cantidad = $('#cantidad_'+id).val() ? parseInt($('#cantidad_'+id).val()) : 2;
+					$('#cantidad_'+id).val(++cantidad);
+					this.calcularImporte(id, precio, cantidad);
+				},
+				calcularGranTotal: function(){
+					var total = 0;
+					$('span[id^="total_importe_"]').each(function(){
+						total += parseFloat($(this).html());
+					});
+					$('#gran_total').html(total.toFixed(2));
+				}
+		}
 	</script>
 	
 </body>

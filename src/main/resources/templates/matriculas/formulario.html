@@ -34,7 +34,7 @@
                     <div class="container py-4">              
                     	<div class="card bg-ligth">
                     		<div class="card-header">Registro de Matrícula</div> 
-                    		<div class="card-body">
+                    		<div class="card-body bg-white">
                     			<form th:action="@{/matricula/form}" th:object="${matricula}" method="post">
                     				<div class="row">
                     					<label class="col-md-2">Alumno:</label>
@@ -57,6 +57,23 @@
                     						<input type="text" class="form-control" name="buscar_curso" id="buscar_curso">
                     					</div>
                     				</div>
+                    				
+                    				<table th:replace="matriculas/plantilla_items :: itemsMatricula"></table>
+                    				<br><br>
+                    				<table id="cargarItemCursos" class="table table-hover table-bordered">
+                    					<thead>
+                    						<th>Nombre</th>
+                    						<th>Precio</th>
+                    						<th>Cantidad</th>
+                    						<th>Total</th>
+                    						<th>Eliminar</th>
+                    					</thead>
+                    					<tbody>
+                    					
+                    					</tbody>
+                    				</table>
+                    				
+                    				<h5>TOTAL: <span class="badge badge-secondary" id="gran_total">0</span></h5>
                     				
                     				<div class="row mt-4">
                     					<div class="col-12">

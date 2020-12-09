@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bytecode.core.models.entity.Alumno;
 import com.bytecode.core.models.entity.Curso;
+import com.bytecode.core.models.entity.Matricula;
 
 public interface IAlumnoDao {
 
@@ -13,4 +14,7 @@ public interface IAlumnoDao {
 		public void eliminar(Long id);
 		
 		public List<Curso> findByNombre(String term);
+		
+		public void saveMatricula(Matricula matricula);
+		public Curso findCursoById(Long id);
 }

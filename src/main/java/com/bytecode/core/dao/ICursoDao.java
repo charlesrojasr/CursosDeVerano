@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.bytecode.core.models.entity.Curso;
 
 @Repository("cursodao")
-public interface ICursoDao extends CrudRepository<Curso, Integer>{
+public interface ICursoDao extends CrudRepository<Curso, Long>{
 	/*
 	public List<Curso> getCursos();
 	public void save(Curso curso);

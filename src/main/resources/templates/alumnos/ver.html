@@ -52,7 +52,7 @@
                     			</ul>
                     			
                     			<div th:if="${#lists.isEmpty(alumno.matriculas)}" class="my-4">No se ha matriculado aún en ningún curso.</div>
-                    			<table th:if="${not#lists.isEmpty(alumno.matriculas)}" class="table table-bordered table-striped my-4">
+                    			<table th:if="${not#lists.isEmpty(alumno.matriculas)}" class="table table-bordered table-hover my-4">
                     				<thead>
                     					<tr>
                     						<th>Id</th>

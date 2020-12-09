@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bytecode.core.models.entity.Alumno;
 import com.bytecode.core.models.entity.Curso;
+import com.bytecode.core.models.entity.Matricula;
 
 
 @Repository
@@ -20,6 +21,9 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 	private EntityManager em;
 	@Autowired
 	private ICursoDao cursoDAO;
+	
+	@Autowired
+	private IMatriculaDao matriculadao;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -54,5 +58,16 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 	@Override
 	public List<Curso> findByNombre(String term) {
 		return cursoDAO.findByNombre(term);
+	}
+
+	@Override
+	public void saveMatricula(Matricula matricula) {
+		matriculadao.save(matricula);
+	}
+
+	@Override
+	public Curso findCursoById(Long id) {
+		// TODO Auto-generated method stub
+		return cursoDAO.findById(id).orElse(null);
 	}
 }

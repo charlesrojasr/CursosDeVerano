@@ -45,5 +45,15 @@ public class DetalleMatricula implements Serializable{
 		this.cantidad = cantidad;
 	}
 
+	
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+
 	private static final long serialVersionUID = 1L;
 }
