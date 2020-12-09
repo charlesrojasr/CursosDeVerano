@@ -18,6 +18,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "alumnos")
@@ -38,6 +40,7 @@ public class Alumno implements Serializable{
 	private String telefono_apoderado;
 	
 	@OneToMany(mappedBy = "alumno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Matricula> matriculas;
 	
 	@PrePersist

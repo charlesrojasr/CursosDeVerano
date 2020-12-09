@@ -1,0 +1,43 @@
+.rojo{
+	color: red;
+}
+.rosado{
+	background: fuchsia
+}
+.nav-container{
+	
+	height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nav-item.inicio{
+    display: flex;
+}
+.nav-item.inicio{
+    padding-right: 45px;
+}
+.image-container-x img{
+	max-width: 150px;
+    max-height: 56px;
+    position: absolute;
+	left: 50px;
+    top: -7px;
+}
+.nav-container{
+	background: #fa5c12;
+}
+.nav-logo{
+	display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.validation{
+	display: none;
+}
+.modal-content {
+    padding: 15px;
+}
