@@ -44,7 +44,7 @@
                     			<br>
                     			<br>
                     			
-                    			<div>DATOS DEL APODERADO</div>
+                    			<div>DATOS DEL APODERADO</div><br>
                     			<ul class="list-group">                   
                     				<li class="list-group-item" th:text="${alumno.nombres_apoderado}"></li>
                     				<li class="list-group-item" th:text="${alumno.apellidos_apoderado}"></li>
@@ -52,7 +52,11 @@
                     			</ul>
                     			
                     			<div th:if="${#lists.isEmpty(alumno.matriculas)}" class="my-4">No se ha matriculado aún en ningún curso.</div>
+                    			
+                    			<br><br>
+                    			
                     			<table th:if="${not#lists.isEmpty(alumno.matriculas)}" class="table table-bordered table-hover my-4">
+                    				<div>DATOS DE MATRÍCULA</div>
                     				<thead>
                     					<tr>
                     						<th>Id</th>
