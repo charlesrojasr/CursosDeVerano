@@ -33,7 +33,8 @@ public class Curso implements Serializable {
 	private Date fecha_creacion;
 	
 	//Relación Curso - Profesor
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne
+	@JoinColumn(name = "profesor_id")
 	private Profesor profesor;
 	
 	//Relación Curso - Categoria
@@ -47,15 +48,6 @@ public class Curso implements Serializable {
 		fecha_creacion = new Date();
 	}		
 	
-
-
-	public Profesor getProfesor() {
-		return profesor;
-	}
-
-	public void setProfesor(Profesor profesor) {
-		this.profesor = profesor;
-	}
 
 	public Long getId() {
 		return id;
@@ -100,10 +92,19 @@ public class Curso implements Serializable {
 	}
 
 
+	public Profesor getProfesor() {
+		return profesor;
+	}
+
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Curso [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", profesor=" + profesor
+		return "Curso [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ","
+				+ " profesor=" 
 				+ ", categorias=" + "]";
 	}
 

@@ -60,6 +60,16 @@
 													<option th:each="cat :${categoria}" th:value="${cat.id}" th:text="${cat.nombre}" th:if="${cat.id != 10}" />
 													<!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small> -->
 												</select>
+										</div>	
+										<div class="col-md-6 mb-2" >
+												<label>Profesor:</label>
+												<!-- <input type="text" class="form-control" name="buscar_categoria" id="buscar_categoria" > -->
+												<select class="browser-default custom-select"
+													th:field="*{profesor}">
+													<option value="" th:text="'No Categorizado'"></option>
+													<option th:each="item :${profesor}" th:value="${item.id}" th:text="${item.nombres}" th:if="${item.id != 10}" />
+													<!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small> -->
+												</select>
 										</div>				
 									</div>
 									<br>

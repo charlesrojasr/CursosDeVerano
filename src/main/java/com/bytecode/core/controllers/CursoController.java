@@ -19,6 +19,7 @@ import com.bytecode.core.dao.ICursoDao;
 import com.bytecode.core.models.entity.Curso;
 import com.bytecode.core.service.CategoriaService;
 import com.bytecode.core.service.CursoService;
+import com.bytecode.core.service.ProfesorService;
 
 
 @Controller
@@ -31,6 +32,10 @@ public class CursoController {
 	@Autowired
 	@Qualifier("categoriaservice")
 	private CategoriaService categoriaservice;
+	
+	@Autowired
+	@Qualifier("profesorservice")
+	private ProfesorService profesorservice;
 	
 	@Autowired
 	private CursoService cursoservice;
@@ -53,6 +58,7 @@ public class CursoController {
 		model.put("curso", curso);
 		model.put("pagina", 2);
 		model2.addAttribute("categoria", categoriaservice.getCategoriaCursos());
+		model2.addAttribute("profesor", profesorservice.getProfesors());
 		return "cursos/form";
 	}
 	
@@ -61,6 +67,7 @@ public class CursoController {
 		//model.addAttribute("categoria", categoriadao.getCategoriaCursos());
 		if (result.hasErrors()) {
 			model.addAttribute("categoria", categoriaservice.getCategoriaCursos());
+			model.addAttribute("profesor", profesorservice.getProfesors());
 			return "cursos/form";
 		}
 		else {
@@ -80,6 +87,7 @@ public class CursoController {
 		}
 		model.addAttribute("titulo", "Modificar Cliente");
 		model.addAttribute("categoria", categoriaservice.getCategoriaCursos());
+		model.addAttribute("profesor", profesorservice.getProfesors());
 		model.addAttribute("curso",curso);
 		return "cursos/form";
 	}

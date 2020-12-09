@@ -40,7 +40,8 @@
 											<th>Nombre</th>
 											<th>Precio</th>
 											<th>Fecha de creación</th>
-											<th>Categoría</th> 								
+											<th>Categoría</th>
+											<th>Profesor</th> 								
 											<th></th>
 											<th></th>									
 										</tr>
@@ -51,7 +52,8 @@
 											<td th:text="${item.nombre}"></td>
 											<td th:text="${item.precio}"></td>
 											<td th:text="${item.fecha_creacion}"></td>
-										    <td th:text="${item.categoria.nombre}"></td> 	  																						
+										    <td th:text="${item.categoria.nombre}"></td>
+										    <td th:text="${item.profesor.nombres}"></td> 	  																						
 											<td>
 												<a th:href="@{/cursos/form/}+${item.id}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
 											</td>
